@@ -1,6 +1,6 @@
 import './App.css';
 import Login from './component/login';
-import {Navigate,Route,Routes} from 'react-router-dom';
+import {Route,Routes} from 'react-router-dom';
 import Dashboard from './component/dashboard';
 import NotePage from './component/note'
 import Items from './component/model/item.mjs';

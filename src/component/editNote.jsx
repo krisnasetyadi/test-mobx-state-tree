@@ -6,29 +6,37 @@ function EditText({dataItem,index}){
     const [show,setShow] = useState('')
     const handleShow =()=>  setShow(true)
     const handleClose =()=>  setShow(false)
-    const [textData,setTextData]=useState([dataItem.textNote])
+    const [textData,setTextData]=useState([])
 
-    function updateText(item,index){
+    function updateText(){
         if(dataItem.textNote !== null){
             setTextData([...textData,dataItem.textNote]) 
        }
-        // const update = textData.filter((item,index) =>{
-        //   return index.id === id;
-         
-        // })
+
     var local = localStorage.getItem('List Text',((item,index)=>{
         console.log(item)
         console.log(index)
     }))
         // setTextData(localStorage.index)
         console.log(textData)
-        
         // console.log(update)
       }
       useEffect(()=>{
         localStorage.setItem('List Text',JSON.stringify(textData))
     },[textData])
-    
+    function updateText(index){
+        let updateData = textData.find((item)=>{
+            return textData.length-1 === index 
+            // console.log('tes',item)
+            //  console.log(index.length)
+         })
+         console.log(dataItem.textNote.length );
+         console.log('klikS',index);
+         console.log('testlagi',textData.length-1);
+        console.log(updateData);
+        setTextData(textData)
+        console.log('hasil',textData)
+    }
     return(
          <>
     <Button variant="primary" 
