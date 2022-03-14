@@ -1,0 +1,12 @@
+{
+  "itemsJson": [
+    {
+      "id": 1,
+      "textData": "test"
+    },
+    {
+      "id": 2,
+      "textData": "test2"
+    }
+  ]
+}
