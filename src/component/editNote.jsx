@@ -2,45 +2,49 @@ import { observer } from "mobx-react";
 import React, { useState,useEffect } from "react";
 import {Modal,Button} from 'react-bootstrap';
 
-function EditText({dataItem,index}){
+function EditText({dataItem,textData}){
     const [show,setShow] = useState('')
     const handleShow =()=>  setShow(true)
     const handleClose =()=>  setShow(false)
-    const [textData,setTextData]=useState([])
+    const [updateData,setUpdateData] = useState([])
 
-    function updateText(){
-        if(dataItem.textNote !== null){
-            setTextData([...textData,dataItem.textNote]) 
-       }
+    // function updateText(){
+    //     if(dataItem.textNote !== null){
+    //         setUpdateData([...updateData,dataItem.textNote]) 
+    //    }
 
-    var local = localStorage.getItem('List Text',((item,index)=>{
-        console.log(item)
-        console.log(index)
-    }))
+    // var local = localStorage.getItem('List Text',((item,index)=>{
+    //     console.log(item)
+    //     console.log(index)
+    // }))
         // setTextData(localStorage.index)
-        console.log(textData)
+        // console.log(updateData)
         // console.log(update)
-      }
-      useEffect(()=>{
-        localStorage.setItem('List Text',JSON.stringify(textData))
-    },[textData])
+    //   }
     function updateText(index){
-        let updateData = textData.find((item)=>{
+        let newData = textData.find((item)=>{
             return textData.length-1 === index 
             // console.log('tes',item)
             //  console.log(index.length)
          })
-         console.log(dataItem.textNote.length );
-         console.log('klikS',index);
-         console.log('testlagi',textData.length-1);
-        console.log(updateData);
-        setTextData(textData)
-        console.log('hasil',textData)
+         console.log('index',dataItem.textNote.length );
+         setUpdateData(dataItem.textNote)
+         console.log('item',dataItem.textNote)
+         console.log('newData',newData)
+         console.log('index tabel',index);
+         console.log('id textData',updateData.length-1);
+         console.log('update',updateData)
     }
+
+      useEffect(()=>{
+        localStorage.setItem('List Text',JSON.stringify(updateData))
+    },[updateData])
+    
+  
     return(
          <>
     <Button variant="primary" 
-    onClick={handleShow} data-target={`#id${textData}`}>
+    onClick={handleShow} data-target={`#id${updateData}`}>
     Edit
     </Button>
         <Modal show={show} onHide={handleClose}>

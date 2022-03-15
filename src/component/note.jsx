@@ -5,7 +5,8 @@ import EditNote from "./editNote";
 import Errorpage from "./errorpage";
 import { FaAngleDoubleLeft } from "react-icons/fa";
 import {useNavigate} from 'react-router-dom';
-import Items from './model/item.mjs'
+import Items from './model/item.mjs';
+import {getSnapshot} from 'mobx-state-tree';
 
 function NotePage({dataItem,userData}){
     const navigate = useNavigate()
@@ -20,7 +21,7 @@ function NotePage({dataItem,userData}){
         if(dataItem.textNote !== null){
              setTextData([...textData,dataItem.textNote]) 
         }
-        console.log(adder)
+        console.log('hasil',getSnapshot(adder))
         // try{
         //     const data = {textData}
         //     const response = await fetch('http://localhost:3000/itemsJson',{
@@ -86,7 +87,7 @@ function NotePage({dataItem,userData}){
                 <tr key={index}>
                     <td >{item}</td>
                     {/* <td><Button onClick={()=>editHandler(index)}>Edit</Button> </td> */}
-                    <td><EditNote dataItem={dataItem} index={index}/> </td>
+                    <td><EditNote dataItem={dataItem} textData={textData} index={index}/> </td>
                     <td><Button onClick={()=>deleteHandler(index)}>Delete</Button></td>
                 </tr>)})}
             </tbody>
